@@ -8,9 +8,10 @@ import sys
 
 def main():
     basepath = "/"
-    if sys.argv[0] != "":
-        basepath = sys.argv[0]
+    if sys.argv[1] != "":
+        basepath = sys.argv[1]
     directory_copy("static", "docs")
+    print(basepath)
     generate_pages_recursive("content", "template.html", "docs", basepath)
 
 def directory_copy(src, dest):
