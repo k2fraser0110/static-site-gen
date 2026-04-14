@@ -23,7 +23,7 @@ def block_to_children(block):
             while block[header_num] == "#": header_num += 1
             return ParentNode(f"h{header_num}", text_to_children(block[header_num+1:]))
         case BlockType.QUOTE:
-            clean_quote = "\n".join([x[1:] for x in block.split("\n")])
+            clean_quote = "\n".join([x[1:].strip() for x in block.split("\n")])
             return ParentNode("blockquote", text_to_children(clean_quote))
         case BlockType.UNORDERED_LIST:
             clean_list = [x[2:] for x in block.split("\n")]
